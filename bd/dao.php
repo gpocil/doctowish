@@ -3,13 +3,13 @@ include('bd\connexion.php');
 
 class user extends connexion
 {
-    public static function create_user($nom, $prenom, $mail, $adresse, $ville, $cp, $tel, $dn, $prat_id, $tuteur)
+    public static function create_user($nom, $prenom, $mail, $adresse, $ville, $cp, $tel, $dn, $prat_id, $tuteur, $photo)
     {
-        $sql = "INSERT INTO `user` (`nom`, `prenom`, `adresse`, `ville`, `cp`, `prat_id`, `mail`, `tel`, `date_naissance`, `tuteur`) VALUES ('" . $nom . "', '" . $prenom . "','" . $adresse . "','" . $ville . "','" . $cp . "','" . $prat_id . "','" . $mail . "','" . $tel . "','" . $dn . "','" . $tuteur . "')";
+        $sql = "INSERT INTO `user` (`nom`, `prenom`, `adresse`, `ville`, `cp`, `prat_id`, `mail`, `tel`, `date_naissance`, `tuteur`, `photo`) VALUES ('" . $nom . "', '" . $prenom . "','" . $adresse . "','" . $ville . "','" . $cp . "','" . $prat_id . "','" . $mail . "','" . $tel . "','" . $dn . "','" . $tuteur . "','" . $photo . "')";
         connexion::query($sql);
     }
 
-    public static function update_user($id, $nom, $prenom, $mail, $adresse, $ville, $cp, $tel, $dn, $prat_id, $tuteur)
+    public static function update_user($id, $nom, $prenom, $mail, $adresse, $ville, $cp, $tel, $dn, $prat_id, $tuteur,$photo)
     {
         $sql = "UPDATE user SET";
         if (isset($id)) {
@@ -43,6 +43,9 @@ class user extends connexion
             if (isset($cp)) {
                 $sql .= " cp = '$cp',";
             }
+            if (isset($photo)) {
+                $sql .= " photo = '$photo',";
+            }
             $sql = rtrim($sql, ",");
             $sql .= " WHERE id = $id";
             connexion::query($sql);
@@ -53,6 +56,7 @@ class user extends connexion
     }
     public static function delete_user($id){
     $sql = "DELETE FROM `user`  WHERE `id` = $id";
+    // Ajouter une fonction permettant aussi de supprimer la photo du patien du serveur
     connexion::query($sql);
 }
 

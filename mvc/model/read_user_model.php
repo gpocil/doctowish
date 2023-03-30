@@ -10,6 +10,7 @@ while (($row = $statement->fetch())) {
     	'nom' => $row['nom'],
     	'prenom' => $row['prenom'],
     	'adresse' => $row['adresse'],
+		'photo' => $row['photo'],
     	'ville' => $row['ville'],
     	'prat_id' => $row['prat_id'],
 	];

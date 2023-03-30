@@ -22,7 +22,9 @@
                 	// We display the post content.
                 	echo "</br>adresse : ".($post['adresse']);
                     echo "</br>ville : ".($post['ville']);
+					echo '</br><img src='. ($post['photo']) .' width="150" height="200" />';
                     echo "</br>prat_id : ".($post['prat_id']);
+
                 	?>
                 	<br />
                 	<em><a href="?show=prat&id=<?=($post['prat_id'])?>"> Voir le praticien </a></em>

@@ -1,9 +1,0 @@
-<?php 
-session_set_cookie_params(0);
-session_start();
-require("modele/cadenas_user.php");
-cadenas_user();
-require("modele/modele_liste_rdv_prat.php");
-listing_rdv();
-require("vue/liste_rdv_prat.php");
-?>

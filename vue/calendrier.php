@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Rendez-vous</title>
-    <link rel="stylesheet" type="text/css" href="../asset/css/mark-your-calendar.css">
-    <link rel="stylesheet" href="../asset/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="asset/css/mark-your-calendar.css">
+    <link rel="stylesheet" href="asset/css/materialize.min.css">
 </head>
 <body>
 
@@ -13,9 +13,9 @@
         <span id="selected-time"></span></p>
         <button onClick="validerRdv()"> Valider le rendez-vous </button>
     </div>
-    <script src="../asset/js/materialize.min.js"></script>
-    <script src="../asset/js/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="../asset/js/mark-your-calendar.js"></script>
+    <script src="asset/js/materialize.min.js"></script>
+    <script src="asset/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="asset/js/mark-your-calendar.js"></script>
     <!-- Script permettant de récupérer la valeur de la date et heure sélectionnée -->
     <script type="text/javascript">
     function validerRdv() {

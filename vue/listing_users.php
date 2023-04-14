@@ -37,7 +37,6 @@
 		$mail = $_SESSION['list_users'][0][$i]['mail'];
 		$tel = $_SESSION['list_users'][0][$i]['tel'];
 		$tuteur = $_SESSION['list_users'][0][$i]['tuteur'];
-		$photo = $_SESSION['list_users'][0][$i]['photo'];
 		$counter++;
 	?>
 		<div class="news">
@@ -54,9 +53,6 @@
 				echo "</br>Mail : " . $mail;
 				echo "</br>N° Téléphone : " . $tel;
 				echo "</br>Tuteur : " . $tuteur;
-				if($photo != ""){
-				echo '</br>Photo : <img src="'.$photo.'" style="max-width:10%">';
-				}
 				?>
 			<form method="post" action="?action=update_user&id=<?=$id?>">
 				<input type="submit" value="Modifier fiche patient" name="yes">

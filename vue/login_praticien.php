@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../asset/css/login_prat.css">
+
 <html>
 <head>
     <title>Page de connexion</title>
@@ -21,6 +23,8 @@
     </form>
 
     <a href="?action=inscription_prat"> S'inscrire </a>
+    <img id = "logo" src="asset/img/Doctowish-logo.png">
+
 
 
 </body>

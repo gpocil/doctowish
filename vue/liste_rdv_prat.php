@@ -14,7 +14,7 @@
 	<input type="hidden" name="action" value="liste_rdv_prat">
     <select name="id" id="pec-select">
         <option value="">--Choisir une prise en charge--</option>
-        <option value="<?=$_SESSION['nom_pec'][1];?>"><?=$_SESSION['nom_pec'][1];?></option>
+        <option value="<?=$_SESSION['nom_pec'][1];?>"><?=$_SESSION['nom_pec'][1];?></option><!-- TODO-->
         <option value="<?=$_SESSION['nom_pec'][2];?>"><?=$_SESSION['nom_pec'][2]?></option>
         <option value="<?=$_SESSION['nom_pec'][3];?>"><?=$_SESSION['nom_pec'][3]?></option>
     </select>
@@ -24,7 +24,7 @@
 
 
 <?php
-if(isset($_GET['pec']) && $_GET['pec'] != 'defaut') {
+if(isset($_GET['pec']) && $_GET['pec'] != 'defaut') {//Inutile ? 
     $selected_value = $_GET['pec'];
 echo $selected_value;}
 ?>
@@ -51,7 +51,7 @@ echo $selected_value;}
                 echo '<br>Type de prise en charge : '.$nom;
 				echo '<br>Patient : ' . $nom_user . ', ' . $prenom;
 				echo "</br>Date & heure : " . $date_heure;
-                if ($annulation == 1){
+                if ($annulation == 1){//Permet d'annuler le rdv
 				echo '</br><div style="color:red""><strong>Le patient souhaite annuler le rdv</strong></div>'?>
 
                 <form method="post" action="?action=delete_rdv&id=<?=$id?>">

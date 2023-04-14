@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../asset/css/login_user.css">
+
 <html>
 <head>
     <title>Page de connexion</title>
@@ -18,6 +20,8 @@
         <br>
 
         <input type="submit" value="Se connecter">
+        <img id = "logo" src="asset/img/Doctowish-logo.png">
+
     </form>
 
 </body>

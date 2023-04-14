@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../asset/css/compte_prat.css">
+
 <html>
 <head>
 	<title>Accueil praticien</title>
@@ -19,23 +21,21 @@
     ?>
 
 	<ul>
-    <li>Nom : <?=$nom?></li>
-    <li>Prénom : <?=$prenom?></li>
-    <li>Adresse : <?=$adresse?></li>
-    <li>Spécialité : <?=$spec?></li>
-    <li>N° Adeli : <?=$adeli?></li>
-    <li>Téléphone : <?=$tel?></li>
-    <li>Mail : <?=$mail?></li>
-	<li><a href="?action=compte_prat_update">Modifier mes informations personnelles</a></li>
+    <li><b>Nom :</b> <?=$nom?></li>
+    <li><b>Prénom :</b> <?=$prenom?></li>
+    <li><b>Adresse :</b> <?=$adresse?></li>
+    <li><b>Spécialité :</b> <?=$spec?></li>
+    <li><b>N° Adeli :</b> <?=$adeli?></li>
+    <li><b>Téléphone :</b> <?=$tel?></li>
+    <li><b>Mail :</b> <?=$mail?></li>
+	<li><a href="?action=compte_prat_update">Modifier mes coordonnées</a></li>
     <li><a href="?action=password_update">Modifier mon mot de passe</a></li>
-
-	</ul>
-
-
-
-	<ul>
     <li><a href="?action=accueil_prat">Retour</a></li>
     <li><a href="?action=logout">Déconnexion</a></li>
 	</ul>
+
+
+	<img id = "logo" src="asset/img/Doctowish-logo.png">
+
 </body>
 </html>

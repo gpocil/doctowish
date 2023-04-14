@@ -30,10 +30,8 @@ function redirigeVers($action="defaut") {
     $lesActions["delete_rdv"] = "Controleur_delete_rdv.php";
     $lesActions["ajout_rdv"] = "Controleur_creation_rdv.php";
     $lesActions["liste_rdv_user"] = "Controleur_liste_rdv_user.php";
-<<<<<<< HEAD
-=======
+    $lesActions["calendrier"] = "Controleur_calendrier.php";
     $lesActions["error"] = "Controleur_error.php";
->>>>>>> 45ac4cc9c3994f59eae22ee35c2f8ec0bdc121a1
     
     if (isset($_GET['action'])){
 	$controler_id = $lesActions[$action];

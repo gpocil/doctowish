@@ -13,7 +13,8 @@
     <form method="post" enctype="multipart/form-data">
 
     <div id="inscription" style="text-align: right; margin-right: 44%;">
-    <p>Email : <input type="text" id="mail" name="mail"></p>
+    
+            <p>Email : <input type="text" id="mail" name="mail"></p>
             <p id="mail-info" style="display:none;">Adresse email obligatoire</p>
 
             <p>Mot de passe : <input type="text" id="mdp" name="mdp"></p>

@@ -2,9 +2,9 @@
 <html>
 <head>
 	<title>Inscription User</title>
-    <script src="../assets/js/jquery.min.js"></script>
-    <script src="../assets/js/validationForm.js"></script>
-    <script src="../assets/js/formUser.js"></script>
+    <script src="../asset/js/jquery.min.js"></script>
+    <script src="../asset/js/validationForm.js"></script>
+    <script src="../asset/js/formUser.js"></script>
 </head>
 <body>
     <h1 style="text-align: center;">Inscription User</h1>

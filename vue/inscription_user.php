@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <<<<<<< HEAD
 <!DOCTYPE html>
 <html>
@@ -50,6 +51,8 @@
 
 </body>
 =======
+=======
+>>>>>>> Stashed changes
 <!DOCTYPE html>
 <html>
 <head>
@@ -101,5 +104,4 @@
     <a href="?action=accueil_prat">Retour à l'accueil</a>
 
 </body>
->>>>>>> 28c967b58d12a543be4135c31cc67aad9a36242c
 </html>

@@ -25,7 +25,7 @@
             <p id="prenom-info" style="display:none;">Prénom obligatoire</p>
             
             <p>Adresse* : <input type="text" id="adresse" name="adresse"></p>
-            <p id="adresse-info" style="display:none;">Adresse obligatoire</p>
+            
             
             <p>Ville* : <input type="text" id="ville" name="ville"></p>
             <p id="ville-info" style="display:none;">Ville obligatoire</p>

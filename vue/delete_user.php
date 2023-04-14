@@ -8,6 +8,7 @@
 	<p>Vous êtes connecté en tant que : <?=$_SESSION['name']." ".$_SESSION['prenom'];?>.</p>
     <body>
 <p>Êtes vous sûr de vouloir supprimer le patient : <b><?=$_SESSION['delete_user'][0]['prenom'].' '.$_SESSION['delete_user'][0]['nom']?></b> ?</p>
+
 <form method="post" action="?action=delete_user&id=<?=$_GET['id'];?>">
                 <input type="submit" value="Oui" name="yess">
                 <input type="submit" value="Retour à la liste des patients" name="nope">

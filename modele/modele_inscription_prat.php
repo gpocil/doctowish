@@ -3,7 +3,8 @@ require("modele/dao.php");
 
 function inscription_prat(){
     if(isset($_POST["mail"]) && isset($_POST["nom"]) && isset($_POST["prenom"]) &&  isset($_POST["adresse"]) &&  isset($_POST["ville"]) && isset($_POST["cp"]) && isset($_POST["adeli"]) && isset($_POST["tel"]) && isset($_POST["specialite"])) {
-
+        // $this->verif($post);
+        // !empty$post)
         $mail=$_POST["mail"]; 
         $mdp = password_hash($_POST["mdp"], PASSWORD_DEFAULT);
         $nom=$_POST["nom"];
@@ -32,6 +33,11 @@ function inscription_prat(){
         
     }
     
+// function verif($posts)
+//     foreach($posts as $post){
+//         if (!isset($post) || empty($post)) {
+//             return false;
+//         }
+//     }
 }
-
-?> 
+?>

@@ -2,8 +2,8 @@
 <html>
 <head>
     <title>Rendez-vous</title>
-    <link rel="stylesheet" type="text/css" href="asset/css/mark-your-calendar.css">
-    <link rel="stylesheet" href="asset/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="../asset/css/mark-your-calendar.css">
+    <link rel="stylesheet" href="../asset/css/materialize.min.css">
 </head>
 <body>
 

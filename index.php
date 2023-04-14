@@ -4,7 +4,7 @@ require  __DIR__ .  "/controleur/routage.php";
 
 
 /**
-*	Controleur principal  
+*connard	Controleur principal  
 */
 $action = null;
 

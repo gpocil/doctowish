@@ -10,7 +10,7 @@ include("modele/dao.php");
 // login_prat::update_login_prat(2, 12, "caca");
 // login_prat::delete_login_prat(3);
 // print_r (login_prat::read_login_prat(4));
-
+echo 'PD';
 
 // typepec::create_typepec("Dentisterie", 80, 12, 30);
 // typepec::update_typepec(3, "TEST123", 50, 12, 60);

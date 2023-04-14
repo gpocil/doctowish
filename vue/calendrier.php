@@ -25,7 +25,6 @@
                 window.location.href = url;
     }
     </script>
-
     <script type="text/javascript">
         (function($) {
           $('#picker').markyourcalendar({

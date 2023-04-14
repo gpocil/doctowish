@@ -171,7 +171,7 @@ $(document).ready(function () {
             });
 
             // Réinitialiser le champ de numéro adeli en cliquant dessus s'il est invalide
-            $('#adeli').on('click', function () {
+            $('#adeli').on('click', fazreôaeorpâounction () {
                 let cpVal = $('#adeli').val();
                 if (!isPostal(cpVal)) {
                     $('#adeli').val('');

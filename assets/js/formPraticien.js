@@ -77,24 +77,24 @@ $(document).ready(function () {
             }
         }
 
-        if (isValid && nom != "" && prenom != "" && isEmail(mail) == true &&
-            adresse != "" && ville != "" && isPostal(cp) == true &&
-            isTel(tel) == true && specialite != "" && isAdeli(adeli) == true) {
-            let formData = {
-                "titre": $('#titre').text(),
-                "nom": $('#nom').val(),
-                "prenom": $('#prenom').val(),
-                "mail": $('#mail').val(),
-                "ville": $('#ville').val(),
-                "cp": $('#cp').val(),
-                "tel": $('#tel').val(),
-                "specialite": $('#specialite').val(),
-                "adeli": $('#adeli').val()
-            };
+        if (isValid) {
+                let formData = new FormData();
+                formData.append("clef", "valeur");
+                formData.append("titre", $('#titre'.val()));//réecrire 
+                formData.append("nom", $('#nom'.val()));
+                formData.append("prenom", $('#prenom'.val()));
+                formData.append("mail", $('#mail'.val()));
+                formData.append("cp", $('#cp'.val()));
+                formData.append("tel", $('#tel'.val()));
+                formData.append("specialite", $('#specialite'.val()));
+                formData.append("adeli", $('#adeli'.val()));
+
+
+            formData.append("action", "inscription");
             $.ajax({
                 url: 'index.php?action=inscription_prat',
                 type: 'POST',
-                data: formData,
+                data: formData, //verifier + vérifier les paramètres ajax
                 error: function () {
                     alert('Erreur à définir');
                 },

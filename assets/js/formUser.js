@@ -42,9 +42,9 @@ $(document).ready(function () {
 			tuteur = $('#tuteur').val(),
 			photo = $('#photo').val();
 
-		let formFields = [nom, prenom, mail, adresse, ville, cp, tel, dn, pratID];
-		let fieldNames = ['Nom', 'Prénom', 'Email', 'Adresse', 'Ville', 'Code Postal', 'Téléphone', 'Date de Naissance', 'PratID'];
-		let isValid = true;
+			let formFields = [nom, prenom, mail, adresse, ville, cp, tel, dn, pratID];
+			let fieldNames = ['Nom', 'Prénom', 'Email', 'Adresse', 'Ville', 'Code Postal', 'Téléphone', 'Date de Naissance', 'PratID'];
+		   	let isValid = true;
 
 		// Loop through form fields and perform validation
 		for (let i = 0; i < formFields.length; i++) {
@@ -74,23 +74,28 @@ $(document).ready(function () {
         }
 
 		if (isValid) {
-			// Affichage alerte
-			alert('Contenu du formulaire : \nNom : ' + nom + '\n' + 'Email : ' + mail + '\n' + 'Sujet : ' + subject + '\n' + 'Message : ' + msg + '\n');
+			let formData = new FormData;
+			formData.append("clef", "valeur");
+			formData.append("nom", $('#nom').val());
+			formData.append("prenom", $('#prenom').val());
+			formData.append("adresse", $('#adresse').val());
+			formData.append("ville", $('#ville').val());
+			formData.append("cp", $('#cp').val());
+			formData.append("tel", $('#tel').val());
+			formData.append("dn", $('#dn').val());
+			formData.append("pratID", $('#pratID').val());
+	
+			if (tuteur != '') {
+				formData.append("tuteur", tuteur);
+			}
+	
+			if (photo != '') {
+				formData.append("photo", photo);
+			}
 
-			let formData = {
-				nom: nom,
-				prenom: prenom,
-				mail: mail,
-				adresse: adresse,
-				ville: ville,
-				cp: cp,
-				tel: tel,
-				dn: dn,
-				pratID: pratID,
-				tuteur: tuteur,
-				photo: photo
-			};
-
+			
+			formData.append("action", "inscription");
+			
 			// Send an AJAX request to the server
 			$.ajax({
 				url: 'index.php?action=inscription_user', // URL to submit the form

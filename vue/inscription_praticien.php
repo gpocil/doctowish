@@ -12,7 +12,8 @@
     <h1 style="text-align: center;">Inscription Praticien</h1>
     <div id="inscription" style="text-align: right; margin-right: 44%;">
         <form method="post">
-        <p>Email : <input type="text" id="mail" name="mail"></p>
+            
+            <p>Email : <input type="text" id="mail" name="mail"></p>
             <p>Mot de passe : <input type="text" id="mdp" name="mdp"></p>
             
             <p>Nom : <input type="text" id="nom" name="nom"></p>

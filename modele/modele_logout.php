@@ -1,5 +1,4 @@
 <?php
-require("modele/dao.php");
 
 function logout(){
     session_destroy();

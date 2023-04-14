@@ -16,12 +16,12 @@ function inscription_user(){
         $dn = $_POST["dn"];
         $tuteur = $_POST["tuteur"];
         $photo = $_POST["photo"];
-        $array[] = user::read_user_mail($mail);
+        $array[] = user::read_user_mail($mail);//Vérif que le mail n'existe pas déjà dans la BD
         if (!isset($array[0][0]['mail'])) {
-            user::create_user($nom, $prenom, $mail, $adresse, $ville, $cp, $tel, $dn, $prat_id, $tuteur, $photo);
+            user::create_user($nom, $prenom, $mail, $adresse, $ville, $cp, $tel, $dn, $prat_id, $tuteur, $photo);//Création user
             $mail_user[] = user::read_user_mail($mail);
             $id =  $mail_user[0][0]['id'];
-            login_user::create_login_user($id, $mdp);
+            login_user::create_login_user($id, $mdp);//Création login user
         } else {
             echo "Cette adresse mail existe déjà dans la DB";
         }

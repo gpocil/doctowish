@@ -56,7 +56,7 @@ class user extends connexion
     public static function delete_user($id)
     {
         $sql = "DELETE FROM `user`  WHERE `id` = $id";
-        // Ajouter une fonction permettant aussi de supprimer la photo du patien du serveur
+        // Ajouter une fonction permettant aussi de supprimer la photo du patient du serveur
         connexion::query($sql);
     }
 
@@ -66,25 +66,25 @@ class user extends connexion
         $arr[] = connexion::query_return($sql);
         return $arr;
     }
-    public static function read_user_mail($mail)
+    public static function read_user_mail($mail)//Connexion
     {
         $sql = "SELECT * FROM `user`  WHERE `mail` = '$mail'";
         $arr[] = connexion::query_return($sql);
         return $arr;
     }
-    public static function read_user_prat($prat_id)
+    public static function read_user_prat($prat_id)//récup tous les user d'un prat
     {
         $sql = "SELECT * FROM `user`  WHERE `prat_id` = '$prat_id'";
         $arr[] = connexion::query_fetch_all($sql);
         return $arr;
     }
-    public static function read_user_name($nom, $prat_id)
+    public static function read_user_name($nom, $prat_id)//Champ de recherche par nom spécifique prat
     {
         $sql = "SELECT * FROM `user`  WHERE `nom` = '$nom' AND `prat_id` = '$prat_id'";
         $arr[] = connexion::query_fetch_all($sql);
         return $arr;
     }
-    public static function read_user_ville($ville, $prat_id)
+    public static function read_user_ville($ville, $prat_id)//Champ de recherche par ville spécifique prat
     {
         $sql = "SELECT * FROM `user`  WHERE `ville` = '$ville' AND `prat_id` = '$prat_id'";
         $arr[] = connexion::query_fetch_all($sql);
@@ -153,7 +153,7 @@ class praticien
         $arr[] = connexion::query_return($sql);
         return $arr;
     }
-    public static function read_prat_adeli($adeli)
+    public static function read_prat_adeli($adeli)//Connexion
     {
         $sql = "SELECT * FROM praticien  WHERE n_adeli = '$adeli'";
     $arr[] = connexion::query_return($sql);
@@ -194,7 +194,7 @@ class rdv
             }
         }
     }
-    public static function cancel_rdv($id)
+    public static function cancel_rdv($id)//Action user pr annuler rdv
     { {
             $sql = "UPDATE rdv SET `annulation` = '1'
             WHERE `id` = $id";
@@ -213,7 +213,7 @@ class rdv
         $arr[] = connexion::query_return($sql);
         return $arr;
     }
-    public static function read_rdv_user_id($id)
+    public static function read_rdv_user_id($id)//Récup liste RDV par utilisateur 
     {
         $sql = "SELECT `rdv`.`id`, `praticien`.`nom`,`praticien`.`prenom`, `praticien`.`specialite`, `type_pec`.`nom`, `heure_rdv`, `annulation`, `type_pec`.`prat_id`,`rdv`.`user_id` FROM `rdv`
         JOIN `type_pec` ON `type_pec`.`id` = `rdv`.`type_id`
@@ -222,7 +222,7 @@ class rdv
         $arr[] = connexion::query_fetch_all($sql);
         return $arr;
     }
-    public static function read_rdv_prat_id($id)
+    public static function read_rdv_prat_id($id)//Récup liste RDV pour le prat
     {        
         $sql = "SELECT `rdv`.`id`, `user`.`nom`, `user`.`prenom`, `type_pec`.`nom`, `heure_rdv`, `annulation`, `type_pec`.`prat_id` FROM `rdv` 
         JOIN `type_pec` ON `rdv`.`type_id` = `type_pec`.`id` 
@@ -231,7 +231,7 @@ class rdv
         $arr[] = connexion::query_fetch_all($sql);
         return $arr;
     }
-    public static function read_rdv_id($id)
+    public static function read_rdv_id($id)//Sélectionner un rdv spécifique
     {        
         $sql = "SELECT `rdv`.`id`, `user`.`nom`, `user`.`prenom`, `type_pec`.`nom`, `heure_rdv`, `annulation`, `type_pec`.`prat_id`,`rdv`.`user_id` FROM `rdv` 
         JOIN `type_pec` ON `rdv`.`type_id` = `type_pec`.`id` 
@@ -240,7 +240,7 @@ class rdv
         $arr[] = connexion::query_return($sql);
         return $arr;
     }
-    public static function read_rdv_prat_id_nom($id, $nom)
+    public static function read_rdv_prat_id_nom($id, $nom)//Filtre des rdv par patient et type PEC
     {        
         $sql = "SELECT `rdv`.`id`, `user`.`nom`, `user`.`prenom`, `type_pec`.`nom`, `heure_rdv`, `annulation`, `type_pec`.`prat_id` FROM `rdv` 
         JOIN `type_pec` ON `rdv`.`type_id` = `type_pec`.`id` 
@@ -295,7 +295,7 @@ class typepec
         $arr[] = connexion::query_return($sql);
         return $arr;
     }
-    public static function read_typepec_pratid($id)
+    public static function read_typepec_pratid($id)//Read par praticien
     {
         $sql = "SELECT * FROM `type_pec`  WHERE `prat_id` = $id";
         $arr[] = connexion::query_fetch_all($sql);

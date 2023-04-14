@@ -2,12 +2,15 @@
 require("modele/dao.php");
 
 function login_prat(){
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {//Si post reçu
         $adeli = $_POST['adeli'];
         $mdp = $_POST['password'];
         $user[] = praticien::read_prat_adeli($adeli);
         $name = $user[0][0]['nom'];
         $prat_id=$user[0][0]['id'];
+
+
             
         if (isset($user[0][0]['n_adeli'])) {
             
@@ -16,8 +19,9 @@ function login_prat(){
             $prat_id = $prat[0][0]['prat_id'];
             if ($form_id == $prat_id) {
                 $password = $prat[0][0]['mdp'];
-                if (password_verify($mdp, $password)) {
-                    $_SESSION['name']=$name;
+                if (password_verify($mdp, $password)) {//password_verify(mdp_formulaire, mdp hashé de la BD)
+                    
+                    $_SESSION['name']=$name;//Enregistrement des variables dans $_SESSION
                     $_SESSION['prenom']=$user[0][0]['prenom'];
                     ;
                     $_SESSION['type']="prat";

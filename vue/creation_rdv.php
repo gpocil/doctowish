@@ -44,7 +44,7 @@
    <label for="pec">Type de consultation : </label>
    <select name="id" id="pec-select">
         <option value="">--Choisir une prise en charge--</option>
-        <option value="<?=$_SESSION['nom_pec'][10];?>"><?=$_SESSION['nom_pec'][10];?></option>
+        <option value="<?=$_SESSION['nom_pec'][10];?>"><?=$_SESSION['nom_pec'][10];?></option><!---------------------- TODO ------------------------------------------>
         <option value="<?=$_SESSION['nom_pec'][11];?>"><?=$_SESSION['nom_pec'][11]?></option>
         <option value="<?=$_SESSION['nom_pec'][13];?>"><?=$_SESSION['nom_pec'][13]?></option>
     </select><br>

@@ -18,7 +18,6 @@ function delete_pec(){
     if (isset($_POST['yes'])){
     typepec::delete_typepec($id);
     $action = "pec";
-    $redirection = redirigeVers($action);
     header("Location: ?action=" . $action);
     exit();
     
@@ -26,7 +25,6 @@ function delete_pec(){
     
     if (isset($_POST['no'])){
         $action = "pec";
-        $redirection = redirigeVers($action);
         header("Location: ?action=" . $action);
         exit();
     }

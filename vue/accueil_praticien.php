@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="../asset/css/accueil_prat.css">
+
 <html>
 <head>
 	<title>Accueil praticien</title>
@@ -15,6 +17,8 @@
 		<li><a href="?action=pec">Mes prises en charge</a></li>
 		<li><a href="?action=liste_users">Accéder au listing des patients</a></li>
 		<li><a href="?action=logout">Déconnexion</a></li>
+		<img id = "logo" src="asset/img/Doctowish-logo.png">
+
 	</ul>
 </body>
 </html>

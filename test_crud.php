@@ -35,11 +35,11 @@ include("modele/dao.php");
 // praticien::read_prat(122);
 
 
-// user::create_user("Jean-Claude", "Jean", "testetst@zefezf", "12 rud du pourte", "paris", 35, 25525529, 21/03/2023, 12, "Non", "photo");
+// user::create_user("Test", "Aziz", "testetst@zefezf", "12 rud du pourte", "paris", 35, 25525529, 21/03/2023, 12, "Non", "photo");
 // user::update_user(110, "Claude", "Lebail", "testetst", "12 rud du pourte", "paris", 35, 9, 21/03/2023, 12, "Non");
 // user::delete_user(110);
-// user::read_user_id(112);
-// user::read_user_prat(123);
+// var_dump(user::read_user_id(112));
+// var_dump(user::read_user_prat(123));
 // user::read_user_mail('pocaussarieu@gmail.com');
 // print_r(user::read_user_ville('Vannes', 140));
-// print_r(user::read_user_name('Kitou', 140));
+// print_r(user::read_user_name('Jean', 140));

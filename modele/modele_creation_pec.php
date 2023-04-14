@@ -8,7 +8,7 @@ function create_pec(){
         $nom = $_POST["nom"];
         $prat_id=$_SESSION['prat_id'];
     
-        if (isset($_POST["60"])){
+        if (isset($_POST["60"])){//TODO Une seule sélection
             $duree=$_POST["60"];
         }
         if (isset($_POST["30"])){

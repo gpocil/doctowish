@@ -26,7 +26,6 @@ $_SESSION['name']=$nom;
 $_SESSION['prenom']=$prenom;
 praticien::update_prat($id, $nom, $prenom,$mail, $adresse, $ville, $cp, $tel, $spec, $adeli);
 $action = "compte_prat";
-	$redirection = redirigeVers($action);
 	header("Location: ?action=" . $action);
 	exit();
 

@@ -29,117 +29,157 @@ $(document).ready(function () {
 
 	//Au clic du bouton, si la valeur du champ est "", on fait apparaître et disparaître les strings
 	$(".btnAction").on("click", function () {
-		// nom, prenom, mail, adresse, ville, cp, tel, dn, prat_id:, tuteur:, photo 
-		let nom = $('#nom').val(),
-			prenom = $('#prenom').val(),
-			mail = $('#mail').val(),
-			adresse = $('#adresse').val(),
-			ville = $('#ville').val(),
-			cp = $('#cp').val(),
-			tel = $('#tel').val(),
-			dn = $('#dn').val(),
-			pratID = $('#pratID').val(),
-			tuteur = $('#tuteur').val(),
-			photo = $('#photo').val();
-
-			let formFields = [nom, prenom, mail, adresse, ville, cp, tel, dn, pratID];
-			let fieldNames = ['Nom', 'Prénom', 'Email', 'Adresse', 'Ville', 'Code Postal', 'Téléphone', 'Date de Naissance', 'PratID'];
-		   	let isValid = true;
-
-		// Loop through form fields and perform validation
-		for (let i = 0; i < formFields.length; i++) {
-			if (formFields[i] == "") {
-				$(`#${fieldNames[i]}-info`).fadeIn("slow");
-				$(`#${fieldNames[i]}-info`).fadeOut("slow");
+		let fields = [{
+				name: 'Nom',
+				selector: '#nom'
+			},
+			{
+				name: 'Prénom',
+				selector: '#prenom'
+			},
+			{
+				name: 'Email',
+				selector: '#mail'
+			},
+			{
+				name: 'Adresse',
+				selector: '#adresse'
+			},
+			{
+				name: 'Ville',
+				selector: '#ville'
+			},
+			{
+				name: 'Code Postal',
+				selector: '#cp'
+			},
+			{
+				name: 'Téléphone',
+				selector: '#tel'
+			},
+			{
+				name: 'Date de Naissance',
+				selector: '#dn'
+			},
+			{
+				name: 'PratID',
+				selector: '#pratID'
+			}
+		];
+		let isValid = true;
+		fields.forEach(({
+			name,
+			selector
+		}) => {
+			let value = $(selector).val();
+			if (value === '') {
+				$(`#${name}-info`).fadeIn("slow").fadeOut("slow");
 				isValid = false;
 			}
+		});
+	});
+
+	// Boucle  les champs de formulaire et effectuer la validation
+	for (let i = 0; i < formFields.length; i++) {
+		if (formFields[i] == "") {
+			$(`#${fieldNames[i]}-info`).fadeIn("slow");
+			$(`#${fieldNames[i]}-info`).fadeOut("slow");
+			isValid = false;
+		}
+	}
+
+	function validateFormField(fieldName, fieldValue) {
+		switch (fieldName) {
+			case 'mail':
+				if (fieldValue !== '' && !isEmail(fieldValue)) {
+					$('#mail').val('Format de mail invalide');
+					return false;
+				}
+				break;
+			case 'cp':
+				if (fieldValue !== '' && !isPostal(fieldValue)) {
+					$('#cp').val('Format de code postal invalide');
+					return false;
+				}
+				break;
+			case 'tel':
+				if (fieldValue !== '' && !isTel(fieldValue)) {
+					$('#tel').val('Format de numéro téléphonique invalide');
+					return false;
+				}
+				break;
+			default:
+				break;
+		}
+		return true;
+	}
+
+	if (isValid) {
+		let formData = new FormData;
+		formData.append("clef", "valeur");
+		formData.append("nom", $('#nom').val());
+		formData.append("prenom", $('#prenom').val());
+		formData.append("adresse", $('#adresse').val());
+		formData.append("ville", $('#ville').val());
+		formData.append("cp", $('#cp').val());
+		formData.append("tel", $('#tel').val());
+		formData.append("dn", $('#dn').val());
+		formData.append("pratID", $('#pratID').val());
+
+		if (tuteur != '') {
+			formData.append("tuteur", tuteur);
 		}
 
-		if (mail != '') {
-            if (isEmail(mail) == false) {
-                $('#mail').val('Format de mail invalide');
-            }
-        }
-
-        if (cp != '') {
-            if (isPostal(cp) == false) {
-                $('#cp').val('Format de code postal invalide')
-            }
-        }
-
-        if (tel != '') {
-            if (isTel(tel) == false) {
-                $('#tel').val('Format de numéro téléphonique invalide')
-            }
-        }
-
-		if (isValid) {
-			let formData = new FormData;
-			formData.append("clef", "valeur");
-			formData.append("nom", $('#nom').val());
-			formData.append("prenom", $('#prenom').val());
-			formData.append("adresse", $('#adresse').val());
-			formData.append("ville", $('#ville').val());
-			formData.append("cp", $('#cp').val());
-			formData.append("tel", $('#tel').val());
-			formData.append("dn", $('#dn').val());
-			formData.append("pratID", $('#pratID').val());
-	
-			if (tuteur != '') {
-				formData.append("tuteur", tuteur);
-			}
-	
-			if (photo != '') {
-				formData.append("photo", photo);
-			}
-
-			
-			formData.append("action", "inscription");
-			
-			// Send an AJAX request to the server
-			$.ajax({
-				url: 'index.php?action=inscription_user', // URL to submit the form
-				type: 'POST', // HTTP method
-				data: formData, // Form data to send
-				success: function (response) {
-					// Handle success response
-					console.log(response); // Log the response for debugging
-					alert('Form submitted successfully'); // Show a success message
-					// Reset form fields
-					$('form')[0].reset();
-					// Do something with the response, if needed
-				},
-				error: function (xhr, status, error) {
-					// Handle error response
-					console.error(error); // Log the error for debugging
-					alert('Error submitting form'); // Show an error message
-					// Do something with the error, if needed
-				}
-			})
-
-			// Reset email field on click if invalid
-			$('#mail').on('click', function () {
-				let mailVal = $('#mail').val();
-				if (!isEmail(mailVal)) {
-					$('#mail').val('');
-				}
-			});
-
-			// Reset telephone field on click if invalid
-			$('#tel').on('click', function () {
-				let telVal = $('#tel').val();
-				if (!isTel(telVal)) {
-					$('#tel').val('');
-				}
-			});
-
-			// Reset postal code field on click if invalid
-			$('#cp').on('click', function () {
-				let cpVal = $('#cp').val();
-				if (!isPostal(cpVal)) {
-					$('#cp').val('');
-				}
-			});
+		if (photo != '') {
+			formData.append("photo", photo);
 		}
-	})
+
+
+		formData.append("action", "inscription");
+
+		// Envoyer une requête AJAX au serveur
+		$.ajax({
+			url: 'index.php?action=inscription_user', // URL pour soumettre le formulaire
+			type: 'POST',
+			data: formData,
+			success: function (response) {
+				// Gérer la réponse en cas de succès
+				console.log(response); // Enregistrer la réponse pour le débogage
+				alert('Formulaire soumis avec succès'); // Afficher un message de succès
+				// Réinitialiser les champs du formulaire
+				$('form')[0].reset();
+				// Faire quelque chose avec la réponse, si nécessaire
+			},
+			error: function (xhr, status, error) {
+				// Gérer la réponse en cas d'erreur
+				console.error(error); // Enregistrer l'erreur pour le débogage
+				alert('Erreur lors de la soumission du formulaire'); // Afficher un message d'erreur
+				// Faire quelque chose avec l'erreur, si nécessaire
+			}
+		})
+
+		// Réinitialiser le champ email en cliquant dessus s'il est invalide
+		$('#mail').on('click', function () {
+			let mailVal = $('#mail').val();
+			if (!isEmail(mailVal)) {
+				$('#mail').val('');
+			}
+		});
+
+		// Réinitialiser le champ de téléphone en cliquant dessus s'il est invalide
+		$('#tel').on('click', function () {
+			let telVal = $('#tel').val();
+			if (!isTel(telVal)) {
+				$('#tel').val('');
+			}
+		});
+
+		// Réinitialiser le champ de code postal en cliquant dessus s'il est invalide
+		$('#cp').on('click', function () {
+			let cpVal = $('#cp').val();
+			if (!isPostal(cpVal)) {
+				$('#cp').val('');
+			}
+		});
+	}
 })

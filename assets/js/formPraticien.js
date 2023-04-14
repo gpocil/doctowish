@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    //On créé les string "champ obligatoire", et on les cache
     $("#nom-info").append("Nom obligatoire");
     $("#nom-info").hide();
 
@@ -28,73 +29,105 @@ $(document).ready(function () {
 
     //Au clic du bouton, si la valeur du champ est "", on fait apparaître et disparaître les strings
     $(".btnAction").on("click", function () {
-        // nom, prenom, mail, adresse, ville, cp, tel, specialite, adeli 
-        let nom = $('#nom').val(),
-            prenom = $('#prenom').val(),
-            mail = $('#mail').val(),
-            adresse = $('#adresse').val(),
-            ville = $('#ville').val(),
-            cp = $('#cp').val(),
-            tel = $('#tel').val(),
-            specialite = $('#specialite').val(),
-            adeli = $('#adeli').val();
+        let fields = [{
+                name: 'Nom',
+                selector: '#nom'
+            },
+            {
+                name: 'Prénom',
+                selector: '#prenom'
+            },
+            {
+                name: 'Email',
+                selector: '#mail'
+            },
+            {
+                name: 'Adresse',
+                selector: '#adresse'
+            },
+            {
+                name: 'Ville',
+                selector: '#ville'
+            },
+            {
+                name: 'Code Postal',
+                selector: '#cp'
+            },
+            {
+                name: 'Téléphone',
+                selector: '#tel'
+            },
+            {
+                name: 'Spécialité',
+                selector: '#specialite'
+            },
+            {
+                name: 'Adeli',
+                selector: '#adeli'
+            }
+        ];
 
-        let formFields = [nom, prenom, mail, adresse, ville, cp, tel, specialite, adeli];
-        let fieldNames = ['Nom', 'Prénom', 'Email', 'Adresse', 'Ville', 'Code Postal', 'Téléphone', 'Spécialité', 'Adeli'];
         let isValid = true;
 
-        // Loop through form fields and perform validation
-        for (let i = 0; i < formFields.length; i++) {
-            if (formFields[i] == "") {
-                $(`#${fieldNames[i]}-info`).fadeIn("slow");
-                $(`#${fieldNames[i]}-info`).fadeOut("slow");
+        fields.forEach(field => {
+            let value = $(field.selector).val();
+
+            if (value === '') {
+                $(`#${field.name}-info`).fadeIn("slow").fadeOut("slow");
                 isValid = false;
             }
-        }
+        });
 
-        if (mail != '') {
-            if (isEmail(mail) == false) {
-                $('#mail').val('Format de mail invalide');
+        function validateFormField(fieldName, fieldValue) {
+            switch (fieldName) {
+                case 'mail':
+                    if (fieldValue !== '' && !isEmail(fieldValue)) {
+                        $('#mail').val('Format de mail invalide');
+                        return false;
+                    }
+                    break;
+                case 'cp':
+                    if (fieldValue !== '' && !isPostal(fieldValue)) {
+                        $('#cp').val('Format de code postal invalide');
+                        return false;
+                    }
+                    break;
+                case 'tel':
+                    if (fieldValue !== '' && !isTel(fieldValue)) {
+                        $('#tel').val('Format de numéro téléphonique invalide');
+                        return false;
+                    }
+                    break;
+                case 'adeli':
+                    if (fieldValue !== '' && !isAdeli(fieldValue)) {
+                        $('#adeli').val('Format de numéro Adélie invalide');
+                        return false;
+                    }
+                    break;
+                default:
+                    break;
             }
-        }
-
-        if (cp != '') {
-            if (isPostal(cp) == false) {
-                $('#cp').val('Format de code postal invalide')
-            }
-        }
-
-        if (tel != '') {
-            if (isTel(tel) == false) {
-                $('#tel').val('Format de numéro téléphonique invalide')
-            }
-        }
-
-
-        if (adeli != '') {
-            if (isAdeli(adeli) == false) {
-                $('#adeli').val('Format de numéro Adélie invalide')
-            }
+            return true;
         }
 
         if (isValid) {
-                let formData = new FormData();
-                formData.append("clef", "valeur");
-                formData.append("titre", $('#titre'.val()));//réecrire 
-                formData.append("nom", $('#nom'.val()));
-                formData.append("prenom", $('#prenom'.val()));
-                formData.append("mail", $('#mail'.val()));
-                formData.append("cp", $('#cp'.val()));
-                formData.append("tel", $('#tel'.val()));
-                formData.append("specialite", $('#specialite'.val()));
-                formData.append("adeli", $('#adeli'.val()));
+            let formData = new FormData();
+            formData.append("clef", "valeur");
+            formData.append("titre", $('#titre').val());
+            formData.append("nom", $('#nom').val());
+            formData.append("prenom", $('#prenom').val());
+            formData.append("mail", $('#mail').val());
+            formData.append("cp", $('#cp').val());
+            formData.append("tel", $('#tel').val());
+            formData.append("specialite", $('#specialite').val());
+            formData.append("adeli", $('#adeli').val());
 
 
             formData.append("action", "inscription");
             $.ajax({
                 url: 'index.php?action=inscription_prat',
                 type: 'POST',
-                data: formData, //verifier + vérifier les paramètres ajax
+                data: formData, //verifier
                 error: function () {
                     alert('Erreur à définir');
                 },
@@ -115,22 +148,35 @@ $(document).ready(function () {
 
             //-------------Réinitialisation champ 'Mail' au clic si erreur--------------
             $('#mail').on('click', function () {
-                if (($('#mail').val()) === 'Format de mail invalide') {
+                let mailVal = $('#mail').val();
+                if (!isEmail(mailVal)) {
                     $('#mail').val('');
                 }
-            })
+            });
 
+            // Réinitialiser le champ de téléphone en cliquant dessus s'il est invalide
+            $('#tel').on('click', function () {
+                let telVal = $('#tel').val();
+                if (!isTel(telVal)) {
+                    $('#tel').val('');
+                }
+            });
+
+            // Réinitialiser le champ de code postal en cliquant dessus s'il est invalide
             $('#cp').on('click', function () {
-                if (($('#cp').val()) === 'Format de code postal invalide') {
+                let cpVal = $('#cp').val();
+                if (!isPostal(cpVal)) {
                     $('#cp').val('');
                 }
-            })
+            });
 
+            // Réinitialiser le champ de numéro adeli en cliquant dessus s'il est invalide
             $('#adeli').on('click', function () {
-                if (($('#adeli').val()) === 'Format de mail invalide') {
+                let cpVal = $('#adeli').val();
+                if (!isPostal(cpVal)) {
                     $('#adeli').val('');
                 }
-            })
+            });
         }
     })
 })

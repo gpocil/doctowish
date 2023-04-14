@@ -1,0 +1,68 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #F5F5F5;
+  }
+  #logo {
+    display: block;
+    margin: 0 auto;
+    max-width: 200px;
+    height: auto;
+  }
+  h1 {
+    color: #008080;
+    font-size: 36px;
+    margin: 20px 0px;
+    text-align: center;
+  }
+  
+  a {
+    display: block;
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    border-radius: 25px;
+    background-color: #008080;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  a:hover {
+    background-color: #006666;
+  }
+  
+  /* Styles for Practitioner Login */
+  a[href="?action=login_prat"] {
+    display: block;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #FFF;
+    border-radius: 30px;
+    background-color: #193F9F;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+  }
+  
+  a[href="?action=login_prat"]:hover {
+    background-color: #254262;
+  }
+  
+  /* Styles for Patient Login */
+  a[href="?action=login_user"] {
+    background-color: #1E7FCB;
+  }
+  
+  a[href="?action=login_user"]:hover {
+    background-color: #0059A9;
+  }
+  

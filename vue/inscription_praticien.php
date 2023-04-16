@@ -43,7 +43,7 @@
 
             
             <p>
-                <input type="submit" value="Valider" name="submit">
+                <input type="submit" value="Valider" name="submit" class="btnAction">
             </p>
         </form>
     </div>

@@ -1,9 +1,0 @@
-<?php 
-session_start();
-require("Contr_class_praticien.php");
-contr_prat::cadenas_user();
-require("Contr_class_rdv.php");
-contr_rdv::listing_rdv();
-contr_rdv::listing_rdv_by_pec();
-require("vue/liste_rdv_prat.php");
-?>

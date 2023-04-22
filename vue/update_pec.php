@@ -10,30 +10,12 @@
             <p>Durée de la consultation : <?=$_SESSION['update_pec'][0]['duree']?> minutes</p>
             <p><b>Modifier :</b> </p>
           
-  <p>30 minutes <input type="radio" id="30min" name="duree" value="30"></p>
-  <p>60 minutes <input type="radio" id="60min" name="duree" value="60"></p>
-</form>
-
-<script>
-  const boutonsRadio = document.getElementsByName('duree');
-
-  // Ajoute un écouteur d'événements à chaque bouton radio
-  boutonsRadio.forEach(function(bouton) {
-    bouton.addEventListener('change', function() {
-      // Désélectionne tous les autres boutons radio
-      boutonsRadio.forEach(function(autreBouton) {
-        if (autreBouton !== bouton) {
-          autreBouton.checked = false;
-        }
-      });
-    });
-  });
-</script>
-            <p>
+  <p>30 minutes <input type="radio" id="30min" name="30" value="30"></p>
+  <p>60 minutes <input type="radio" id="60min" name="60" value="60"></p>
+  <p>
                 <input type="submit" class="btn btn-primary" value="Valider" name="submit">
             </p>
         </form></div></div>
-
 
 
 
